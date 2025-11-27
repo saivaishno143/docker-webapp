@@ -40,8 +40,10 @@ public class UserServiceImpl implements UserService {
     public List<User> getList() {
     	return userRepository.findAll();
     }
+    
     @Override
-	public User findById(long id){
-    	return userRepository.findOne(id);
+    public User findById(long id) {
+        // Updated for Spring Data JPA 2.x compatibility
+    	return userRepository.findById(id).orElse(null);
     }
 }
